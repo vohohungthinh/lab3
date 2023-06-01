@@ -1,9 +1,11 @@
 package vohohungthinh.lab3.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import vohohungthinh.lab3.Validator.annotation.ValidCategoryId;
+import vohohungthinh.lab3.Validator.annotation.ValidUserId;
 
 @Data
 @Entity
@@ -30,4 +32,8 @@ public class Book {
     @ValidCategoryId
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ValidUserId
+    private  User user;
 }
